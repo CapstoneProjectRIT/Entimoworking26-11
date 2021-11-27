@@ -22,7 +22,7 @@ export default function Nav() {
       </Searchbar>
       <QAsection />
       <Post trigger={Popup} setTrigger={setPopup}>
-        <h1>hello</h1>
+        
       </Post>
     </Container>
   );

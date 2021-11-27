@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import AllL from '../../assets/All.png';
-
+import {NavLink,} from "react-router-dom";
 export default function section() {
   return (
     
@@ -10,23 +10,48 @@ export default function section() {
           <Ttext>Topics</Ttext>
           <Line />
           <InSections>
+            <NavLink to="/Homepage" style={{textDecoration : 'none'}}>
             <MenuItem>
               <Itemlogo />
               All
             </MenuItem>
+            </NavLink>
+            <NavLink to="/educationTask" style={{textDecoration : 'none'}}>
             <MenuItem>
               <Itemlogo />
               Education
             </MenuItem>
+           </NavLink>
+            <NavLink to="/weatherTask" style={{textDecoration : 'none'}}>
+            <MenuItem>
+              <Itemlogo />
+              Weather
+            </MenuItem>
+            </NavLink>
+            <NavLink to="/NutritionTask" style={{textDecoration : 'none'}}>
+            <MenuItem>
+              <Itemlogo />
+              Nutrition
+            </MenuItem>
+            </NavLink>
+            <NavLink to="/TechnologyTask" style={{textDecoration : 'none'}}>
             <MenuItem>
               <Itemlogo />
               Technology
             </MenuItem>
+            </NavLink>
+            <NavLink to="/SocialTask" style={{textDecoration : 'none'}}>
             <MenuItem>
               <Itemlogo />
               Social
             </MenuItem>
-
+            </NavLink>
+            <NavLink to="/BookTask" style={{textDecoration : 'none'}}>
+            <MenuItem>
+              <Itemlogo />
+              Books
+            </MenuItem>
+            </NavLink>
           </InSections>
         </Topic>
       </Section>

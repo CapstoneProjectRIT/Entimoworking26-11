@@ -1,3 +1,6 @@
+
+
+
 const express=require('express');
 const mongoose=require('mongoose');
 const cors=require('cors');
@@ -106,6 +109,27 @@ router.post("/api/likes", (request, response) => {
    router.get('/api/mytasks',(req,res)=>{
     authController.GetMyAllTasks(req,res);
 })
+router.get('/api/educationTask',(req,res)=>{
+    authController.GetEducationTasks(req,res);
+})
+router.get('/api/weatherTask',(req,res)=>{
+    authController.GetWeatherTasks(req,res);
+})
+router.get('/api/NutritionTask',(req,res)=>{
+    authController.GetNutritionTasks(req,res);
+})
+router.get('/api/TechnologyTask',(req,res)=>{
+    authController.GetTechnologyTasks(req,res);
+})
+router.get('/api/SocialTask',(req,res)=>{
+    authController.GetSocialTasks(req,res);
+})
+router.get('/api/BookTask',(req,res)=>{
+    authController.GetBookTasks(req,res);
+})
+router.get('/api/trendingTask',(req,res)=>{
+    authController.GetTrendingTasks(req,res);
+})
 router.get('/api/isuserLoggedIn',(req,res)=>{
     authController.isLoggedIn(req,res);
 })
@@ -124,6 +148,3 @@ const PORT = process.env.PORT;
 app.listen(PORT, () => {
         console.log('server start on port:',PORT);
     })
-
-
-

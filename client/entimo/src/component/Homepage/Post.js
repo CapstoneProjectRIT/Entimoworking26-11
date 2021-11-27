@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import styled from 'styled-components';
 
 import axios from 'axios';
@@ -10,7 +10,21 @@ function Post(props) {
   const [question,setQuestion]=useState('');
   const [location,setLocation]=useState('');
   const [topic,setTopic]=useState('');
+  const [user,setfullname]=useState([]);
+    
+  useEffect(()=>{
+      const url="http://localhost:5000/api/aboutus";
+     
+      axios
+    .get(url, { withCredentials: true })
+    .then((response) => {
+      setfullname(response.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 
+  });
   const postquestion=async (e) =>{
       e.preventDefault();
 
@@ -51,6 +65,7 @@ function Post(props) {
 
     <Contain>
       <div>
+        <h2>{user.fullname}</h2>
         <button type="reset" onClick={() => props.setTrigger(false)}>
           close
         </button>

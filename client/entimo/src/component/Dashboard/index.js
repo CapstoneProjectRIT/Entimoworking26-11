@@ -17,9 +17,11 @@ const Navbar = () => (
           Home
         </Navlink>
      
-        <Navlink>
+        <NavLink to="/trendingTask" style={{textDecoration : 'none'}} >
+          <Navlink>
           Trending Task
         </Navlink>
+        </NavLink>
         <NavLink to="/mytasks" style={{textDecoration : 'none'}}>
         <Navlink>
           My Tasks

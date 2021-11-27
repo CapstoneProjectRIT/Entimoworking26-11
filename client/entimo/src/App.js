@@ -4,8 +4,15 @@ import Login from './component/Login/Login';
 import Landing from './component/Landingpage/Landing';
 
 import Homepage from './component/Homepage/Homepage';
-import Profile from './component/Homepage/Profile';
-import MyTasks from './component/Homepage/MyTask';
+import Profile from './component/Profile/Profile';
+import MyTasks from './component/MyTask/MyTask';
+import Education from './component/Topics/Education';
+import Weather from './component/Topics/Weather';
+import Nutrition from './component/Topics/Nutrition'
+import TrendingTask from './component/TrendingTask/TrendingTask';
+import Technology from './component/Topics/Technology';
+import Social from './component/Topics/Social';
+import Book from './component/Topics/Book';
 import "./App.css";
 import {Route,BrowserRouter as Router} from 'react-router-dom';
 import {useEffect,useState} from 'react';
@@ -46,6 +53,27 @@ function App() {
         </Route>
         <Route path="/mytasks">
           <MyTasks/>
+        </Route>
+        <Route path="/educationTask">
+          <Education/>
+        </Route>
+        <Route path="/weatherTask">
+          <Weather/>
+        </Route>
+        <Route path="/NutritionTask">
+          <Nutrition/>
+        </Route>
+        <Route path="/TechnologyTask">
+          <Technology/>
+        </Route>
+        <Route path="/SocialTask">
+          <Social/>
+        </Route>
+        <Route path="/BookTask">
+          <Book/>
+        </Route>
+        <Route path="/trendingTask">
+          <TrendingTask/>
         </Route>
     </Router>
     

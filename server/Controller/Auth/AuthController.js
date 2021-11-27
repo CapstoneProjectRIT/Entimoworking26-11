@@ -1,4 +1,4 @@
-//AuthController
+
 const formidable=require('formidable')
 const  userModel=require('../../Models/users/userSchema');
 const userSession=require( '../../Models/userSession/userSession');
@@ -10,6 +10,7 @@ const { findOne } = require('../../Models/users/userSchema');
 dotenv.config();
 
 class AuthController{
+  questionId;
     SignUp(req,res){
         const form =new formidable.IncomingForm();
         try{
@@ -80,7 +81,9 @@ class AuthController{
         {
             return res.status(200).json({ error: "Already SignIn" });
         }
-        req.session.userSession={email:userLogin.email,id:userLogin._id}
+       const name=userLogin.fullname;
+        
+        req.session.userSession={email:userLogin.email,id:userLogin._id,name:name}
         res.status(200).send(req.sessionID);
     
     })
@@ -140,10 +143,10 @@ askQustion(req,res)
                 
                 const owner=userSession.email;
                 const id=userSession.id.toString();
-                
+                const name=userSession.name
                 const newquestion=new questionModule({
                     owner:owner,
-                    
+                    name:name,
                     question:question,
                     Location:Location,
                     Topic:Topic
@@ -194,6 +197,112 @@ async GetAllQuestions(request, response) {
       const userSession=request.session.userSession||false;
         const owner=userSession.email;
         const data = await questionModule.find({ owner: owner });
+      
+      
+      return response.status(200).json(data);
+        
+    } catch (error) {
+      return response
+        .status(500)
+        .json({ msg: "Server currently down please try again later" });
+    }
+  }
+  
+  async GetEducationTasks(request, response) {
+   
+    try {
+      
+        const data = await questionModule.find({ Topic:'Education' });
+      
+      
+      return response.status(200).json(data);
+        
+    } catch (error) {
+      return response
+        .status(500)
+        .json({ msg: "Server currently down please try again later" });
+    }
+  }
+  async GetWeatherTasks(request, response) {
+   
+    try {
+      
+        const data = await questionModule.find({ Topic: "Weather" });
+      
+      
+      return response.status(200).json(data);
+        
+    } catch (error) {
+      return response
+        .status(500)
+        .json({ msg: "Server currently down please try again later" });
+    }
+  }
+  async GetNutritionTasks(request, response) {
+   
+    try {
+      
+        const data = await questionModule.find({ Topic: "Nutrition" });
+      
+      
+      return response.status(200).json(data);
+        
+    } catch (error) {
+      return response
+        .status(500)
+        .json({ msg: "Server currently down please try again later" });
+    }
+  }
+  async GetTechnologyTasks(request, response) {
+   
+    try {
+      
+        const data = await questionModule.find({ Topic: "Technology" });
+      
+      
+      return response.status(200).json(data);
+        
+    } catch (error) {
+      return response
+        .status(500)
+        .json({ msg: "Server currently down please try again later" });
+    }
+  }
+  async GetSocialTasks(request, response) {
+   
+    try {
+      
+        const data = await questionModule.find({ Topic: "Social" });
+      
+      
+      return response.status(200).json(data);
+        
+    } catch (error) {
+      return response
+        .status(500)
+        .json({ msg: "Server currently down please try again later" });
+    }
+  }
+  async GetBookTasks(request, response) {
+   
+    try {
+      
+        const data = await questionModule.find({ Topic: "Book" });
+      
+      
+      return response.status(200).json(data);
+        
+    } catch (error) {
+      return response
+        .status(500)
+        .json({ msg: "Server currently down please try again later" });
+    }
+  }
+  async GetTrendingTasks(request, response) {
+   
+    try {
+      
+        const data = await questionModule.find({}).sort({upvotes:-1});
       
       
       return response.status(200).json(data);
@@ -280,9 +389,9 @@ async GetAllQuestions(request, response) {
         }
 
         const { id } = fields;
-        console.log(id);
-        
-        return this.id;
+      
+        this.questionId=id;
+        //return this.id;
       });
     }
         catch (error) {
@@ -323,12 +432,12 @@ Comment(request,response)
             return response.status(400).json({error:"A comment not post"});
         }
       
-    console.log(comment);
-    const authController=new AuthController();
-    const id=authController.GetQuestionId();
-    console.log(id);
+    
+    // authController=new AuthController();
+    //const id=.GetQuestionId();
+   
         const updatedDoc = await questionModule.findOneAndUpdate(
-        {_id:id},
+        {_id:this.questionId},
        {
          $push:{
            comments:{

@@ -1,4 +1,3 @@
-//My Task
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
@@ -7,10 +6,10 @@ import ChatIcon from "@material-ui/icons/Chat";
 import '../Homepage/QuestionList.css';
 //import Comment from "../Homepage/Comment";
 //import PostComment from '../Homepage/PostComment';
-const MyTask=()=> {
+const Weather=()=> {
     const [questions,setQuestions]=useState([]);
     useEffect(()=>{
-        const url="http://localhost:5000/api/mytasks";
+        const url="http://localhost:5000/api/weatherTask";
        
         axios
       .get(url, { withCredentials: true })
@@ -61,7 +60,7 @@ const MyTask=()=> {
                   <div className="question" key={question._id}>
                     <div className="question__profile">
                       
-                      <h4>{question.owner}</h4>
+                      <h4>{question.name}</h4>
                       <h5>Location: {question.Location}</h5>
                       <h5>Topic: {question.Topic}</h5>
                     </div>
@@ -96,4 +95,4 @@ const MyTask=()=> {
         </div>
       );
     };
-export default MyTask;
+export default Weather;

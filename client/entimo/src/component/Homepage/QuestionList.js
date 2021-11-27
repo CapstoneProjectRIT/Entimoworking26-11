@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
@@ -6,7 +5,7 @@ import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import ChatIcon from "@material-ui/icons/Chat";
 import './QuestionList.css';
 //import Comment from "../Homepage/Comment";
-//import PostComment from './PostComment';
+import PostComment from './PostComment';
 
 const QuestionList=()=>{
     const [questions,setQuestions]=useState([]);
@@ -125,7 +124,7 @@ const QuestionList=()=>{
                   <div className="question" key={question._id}>
                     <div className="question__profile">
                       
-                      <h4>{question.owner}</h4>
+                      <h4>{question.name}</h4>
                       <h5>Location: {question.Location}</h5>
                       <h5>Topic: {question.Topic}</h5>
                     </div>
@@ -148,7 +147,7 @@ const QuestionList=()=>{
                         getID(question._id);
                         setPopup(true) 
                          }}></ChatIcon>
-                      
+                      <PostComment trigger={Popup} setTrigger={setPopup}></PostComment>
                     
                       
                     </div>

@@ -5,6 +5,15 @@ const questionSchema=mongoose.Schema({
         type:String,
         required:true
     },
+    name:{
+        type:String,
+        required:true
+    },
+//   sessionID:{
+//       type:String,
+//       required:true,
+//       ref:'users'
+//   },
     question:{
         type:String,
         unique:true,
@@ -20,7 +29,15 @@ const questionSchema=mongoose.Schema({
     },
     comments:{
         type:Array,
-        default:[]
+        default:0
+    },
+    Location:{
+        type:String,
+        required:true
+    },
+    Topic:{
+        type:String,
+        required:true
     }
 
 });
