@@ -1,3 +1,4 @@
+//AuthController
 const formidable=require('formidable')
 const  userModel=require('../../Models/users/userSchema');
 const userSession=require( '../../Models/userSession/userSession');
