@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-import ChatIcon from "@material-ui/icons/Chat";
+import styled from 'styled-components';
 import '../Homepage/QuestionList.css';
 //import Comment from "../Homepage/Comment";
 //import PostComment from '../Homepage/PostComment';
@@ -79,7 +79,7 @@ const Nutrition=()=> {
                         </div>
                         
                         <div className="comments" style={{ cursor: "pointer" }}>
-                      <ChatIcon></ChatIcon>
+                        <Postbutton>Update</Postbutton>
                       
                     
                       
@@ -96,3 +96,11 @@ const Nutrition=()=> {
       );
     };
 export default Nutrition;
+const Postbutton= styled.div`
+width: 144px;
+height: 24.13px;
+background: #16A13A;
+text-align: center;
+color: white;
+border-radius: 12.4675px;
+`

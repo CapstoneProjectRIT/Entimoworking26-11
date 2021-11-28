@@ -1,18 +1,17 @@
 import Signup from './component/SignUp/SignUp';
 import Login from './component/Login/Login';
-
+import Homepagetrending from './component/Homepage/Homepagetrending';
+import HomepageMytasks from './component/Homepage/Homepagemytasks';
+import HomepageEdjucation from './component/Homepage/HomepageEducation';
+import HomepageSocial from './component/Homepage/HomepageSocial';
+import HomepageBooks from './component/Homepage/HomepageBooks';
+import HomepageNutrion from './component/Homepage/HomepageNutrition';
+import HomepageTechnology from './component/Homepage/HomepageTechnology';
+import HomepageWeather from './component/Homepage/HomepageWeather';
 import Landing from './component/Landingpage/Landing';
 
 import Homepage from './component/Homepage/Homepage';
 import Profile from './component/Profile/Profile';
-import MyTasks from './component/MyTask/MyTask';
-import Education from './component/Topics/Education';
-import Weather from './component/Topics/Weather';
-import Nutrition from './component/Topics/Nutrition'
-import TrendingTask from './component/TrendingTask/TrendingTask';
-import Technology from './component/Topics/Technology';
-import Social from './component/Topics/Social';
-import Book from './component/Topics/Book';
 import "./App.css";
 import {Route,BrowserRouter as Router} from 'react-router-dom';
 import {useEffect,useState} from 'react';
@@ -52,28 +51,28 @@ function App() {
           <Profile/>
         </Route>
         <Route path="/mytasks">
-          <MyTasks/>
+          <HomepageMytasks/>
         </Route>
         <Route path="/educationTask">
-          <Education/>
+          <HomepageEdjucation/>
         </Route>
         <Route path="/weatherTask">
-          <Weather/>
+          <HomepageWeather/>
         </Route>
         <Route path="/NutritionTask">
-          <Nutrition/>
+          <HomepageNutrion/>
         </Route>
         <Route path="/TechnologyTask">
-          <Technology/>
+        <HomepageTechnology/>
         </Route>
         <Route path="/SocialTask">
-          <Social/>
+          <HomepageSocial/>
         </Route>
         <Route path="/BookTask">
-          <Book/>
+          <HomepageBooks/>
         </Route>
         <Route path="/trendingTask">
-          <TrendingTask/>
+          <Homepagetrending/>
         </Route>
     </Router>
     

@@ -1,8 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-import ChatIcon from "@material-ui/icons/Chat";
 import './QuestionList.css';
 //import Comment from "../Homepage/Comment";
 import PostComment from './PostComment';
@@ -143,10 +143,10 @@ const QuestionList=()=>{
                         </div>
                         
                         <div className="comments" style={{ cursor: "pointer" }}>
-                      <ChatIcon onClick={() => {
+                      <Postbutton onClick={() => {
                         getID(question._id);
                         setPopup(true) 
-                         }}></ChatIcon>
+                         }}>Update</Postbutton>
                       <PostComment trigger={Popup} setTrigger={setPopup}></PostComment>
                     
                       
@@ -167,3 +167,12 @@ const QuestionList=()=>{
 
 
 export default QuestionList;
+
+const Postbutton= styled.div`
+width: 144px;
+height: 24.13px;
+background: #16A13A;
+text-align: center;
+color: white;
+border-radius: 12.4675px;
+`
