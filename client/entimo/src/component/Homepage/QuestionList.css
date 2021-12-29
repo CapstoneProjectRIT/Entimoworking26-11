@@ -12,7 +12,7 @@
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   width: 100%;
   background: #faf8f9;
-  margin: 0 1rem 1rem;
+  margin: 0 0rem 1rem;
   transition: transform 0.4s;
 }
 .question:hover {
@@ -43,11 +43,10 @@
   margin-left: 20px;
 }
 .question__profile > h4 {
-  margin-right: 20rem;
 }
 
 .question__profile > h5 {
-  margin-left: 10rem;
+  margin-left: 100px;
 }
 .question__stats {
   display: flex;

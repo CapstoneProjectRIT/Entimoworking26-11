@@ -3,7 +3,7 @@ import React,{useState} from 'react';
 import styled from 'styled-components';
 import img from '../../assets/google.png';
 import img2 from '../../assets/Vector.png';
-import {NavLink,useHistory} from "react-router-dom";
+import {Link,useHistory} from "react-router-dom";
 import axios from 'axios';
 
 
@@ -81,36 +81,40 @@ const SignUserUp=async(e)=>{
 
                     </PasswordText>
 
-                    <ConfirmPassword>Confirm Password</ConfirmPassword>
-                    <ConfirmPasswordText type="password" 
+                    <Password>Confirm Password</Password>
+                    <PasswordText type="password" 
                     value={confirmpassword}
                     onChange={e=>setConfirmpassword(e.target.value)}
-                    placeholder="Confirm Password" style={{border: 'none'}} name="confirmpassword" id="confirmpassword" required ></ConfirmPasswordText>
+                    placeholder="Confirm Password" style={{border: 'none'}} name="confirmpassword" id="confirmpassword" required ></PasswordText>
               
 
                 
                 
 
             </Container>
-            <SignupButton onClick={SignUserUp}>
-                <Signuptext>Sign up</Signuptext>
-            </SignupButton>
-            
-            <Signupwith>or Signup with</Signupwith>
-            <Alreadyacount>Already have an account yet? <Login to="/Login">Login</Login></Alreadyacount>
-            <Googleloginbutton style={{border: 'none'}} >
-                <Group6>
-                    <Googleicon></Googleicon>
-                    <GoogleText>Google</GoogleText>
-                </Group6>
-            </Googleloginbutton>
+            <BottomContainer>
+          <LoginButon onClick={SignUserUp}><ButtonText>Sign Up</ButtonText></LoginButon>
+          <Text style={{ marginTop: 36 }}>Or SignUp With</Text>
 
-            <Facebookloginbutton style={{border: 'none'}}>
-                <Group5>
-                    <Facebookicon></Facebookicon>
-                    <FacebookText>Facebook</FacebookText>
-                </Group5>
-            </Facebookloginbutton>
+          <div style={{ display: 'flex' }}>
+            <Gcontainer>
+              <Glogo />
+              <Text>Google</Text>
+
+            </Gcontainer>
+            <Gcontainer>
+              <FBlogo />
+              <Text>Facebook</Text>
+            </Gcontainer>
+          </div>
+          <div style={{ marginTop: 36, display: 'flex' }}>
+            <Text>Already have an account?</Text>
+            <Link to="/login">
+              {' '}
+              <Text style={{ color: '#1976D2' }}>Login</Text>
+            </Link>
+          </div>
+        </BottomContainer>
             
             
            
@@ -132,8 +136,17 @@ const SignUserUp=async(e)=>{
 }
 export default Credential
 
-const Signup= styled.h1
-`
+const Text = styled.text`font-family: Poppins;
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 30px;
+/* identical to box height */
+
+
+color: #000000;
+`;
+const Signup = styled.h1`
 /* SignUp */
 
 
@@ -141,7 +154,7 @@ position: absolute;
 width: 173px;
 height: 72px;
 left: 825px;
-top: 8px;
+top: 65px;
 
 font-family: Poppins;
 font-style: normal;
@@ -153,26 +166,23 @@ line-height: 72px;
 
 color: #000000;   
 
-`
-const Container=styled.div
-`
+`;
+const Container = styled.div`
 position: absolute;
 width: 427px;
-height: 390px;
+display: flex;
+flex-direction: column ;
+justify-content: space-between;
+height: 319px;
 left: 825px;
-top: 70px;
+top: 180px;
 
-`
-const Fullname=styled.h2
-`
+`;
+const Fullname = styled.h2`
 /* Full Name */
 
 
-position: absolute;
-left: 2.36%;
-right: 35.62%;
-top: 6.33%;
-bottom: 70.33%;
+
 
 font-family: Poppins;
 font-style: normal;
@@ -183,17 +193,12 @@ line-height: 30px;
 
 
 color: #000000;
-`
-const Fullnamecontainer=styled.input
-`
+`;
+const Fullnamecontainer = styled.input`
 /* Rectangle 3 */
 
 
-position: absolute;
-left: 2.36%;
-right: 35.62%;
-top: 20.56%;
-bottom: 65.33%;
+margin-left: 10px;
 width:421px;
 height:46px;
 
@@ -210,18 +215,12 @@ line-height: 30px;
 
 color: rgba(0, 0, 0, 0.5);
 
-`
+`;
+
+const Emailtext = styled.h2`
 
 
 
-const Emailtext=styled.h2
-`
-position: absolute;
-left: 2.36%;
-right: 35.62%;
-top: 32.33%;
-bottom: 60.33%;
-height:46px;
 
 font-family: Poppins;
 font-style: normal;
@@ -234,18 +233,14 @@ line-height: 30px;
 color: #000000;
 
 
-`
+`;
+
+const EmailAddress = styled.input`
 
 
-const EmailAddress=styled.input
-`
-position: absolute;
-left: 2.36%;
-right: 35.62%;
-top: 46.27%;
 width:421px;
 height:46px;
-
+margin-left: 10px;
 background: #F7F6F9;
 
 
@@ -258,17 +253,13 @@ line-height: 30px;
 
 
 
-`
+`;
 
-const Password=styled.h1
-`
+const Password = styled.h1`
 /* Password */
 
 
-position: absolute;
-left: 2.36%;
-right: 35.62%;
-top: 58.55%;
+
 
 
 font-family: Poppins;
@@ -280,21 +271,14 @@ line-height: 30px;
 
 
 color: #000000;
-`
+`;
 
-
-const PasswordText=styled.input
-`
+const PasswordText = styled.input`
 /* ********* */
 
 
-position: absolute;
-left: 2.36%;
-right: 35.62%;
-top: 71.82%;
-width:421px;
-height:46px;
 
+margin-left: 10px;
 background: #F7F6F9;
 
 
@@ -307,93 +291,33 @@ line-height: 30px;
 
 
 
-`
-const ConfirmPassword=styled.h1
-`
-/* Password */
-
-
+`;
+const BottomContainer = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
 position: absolute;
-left: 2.36%;
-right: 35.62%;
-top: 82.55%;
+width: 464px;
+height: 263px;
+left: 802px;
+top: 562px;
+`;
 
+const LoginButon = styled.button`
 
-font-family: Poppins;
-font-style: normal;
-font-weight: 700;
-font-size: 20px;
-line-height: 30px;
-/* identical to box height */
+left: 4.53%;
+right: 4.74%;
+top: 0%;
+height: 45px;
+width: 421px;
+left: 21px;
+top: 0px;
+border-radius: 0px;
 
-
-color: #000000;
-`
-
-
-const ConfirmPasswordText=styled.input
-`
-/* ********* */
-
-
-position: absolute;
-left: 2.36%;
-right: 35.62%;
-top: 95.82%;
-width:421px;
-height:46px;
-
-background: #F7F6F9;
-
-
-font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 20px;
-line-height: 30px;
-/* identical to box height */
-
-
-
-`
-
-const SignupButton=styled.button
-`
-/* Rectangle 4 */
-
-
-position: absolute;
-left: 54.4%;
-
-top: 70.84%;
-width:427px;
-height:42px;
-
-
-
-font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 20px;
-line-height: 30px;
-
-
-/* Button background */
-
+bottom: 82.89%;
 background: #000000;
-`
-
-const Signuptext=styled.text
-`
-/* Login */
-
-
-position: absolute;
-left: 41.36%;
-
-top: 5.56%;
-
-
+`;
+const ButtonText = styled.text`
 font-family: Poppins;
 font-style: normal;
 font-weight: bold;
@@ -403,171 +327,27 @@ line-height: 30px;
 
 
 color: #FFFFFF;
-`
-
-const Signupwith=styled.h2
-`
-/* Or SignUp with */
-
-
-position: absolute;
-left: 63.78%;
-
-top: 75.44%;
-
-
-font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 20px;
-line-height: 30px;
-/* identical to box height */
-
-
-color: #000000;
-
-`
-const Googleloginbutton=styled.button
-`
-/* Google */
-
-
-position: absolute;
-width: 196px;
+`;
+const Gcontainer = styled.button`
+width: 193px;
 height: 50px;
-left: 55.1%;
-top: 84.44%;
-background: rgba(255, 204, 207, 0.54);
-`
-const Group6=styled.div
-`
-/* Group 6 */
+box-sizing: border-box;
+margin:15px;
+border: 1px solid #fab9bc;
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+background: rgba(255, 204, 207, 0.54);`;
 
-
-position: absolute;
-left: 15.03%;
-right: 14.73%;
-top: 22%;
-bottom: 22.24%;
-`
-const GoogleText=styled.h3
-`
-/* Google */
-
-
-position: absolute;
-left: 45.45%;
-right: 14.73%;
-top: 0%;
-bottom: 0%;
-
-
-font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 20px;
-line-height: 0px;
-
-color: #000000;
-
-`
-const Googleicon=styled.div
-`
-/* flat-color-icons:google */
-
-
-position: absolute;
-left: 0%;
-right: 68.51%;
-top: 0%;
-bottom: 0%;
-background: url(${img});
-`
-const Facebookloginbutton=styled.button
-`
-/* Facebook */
-
-
-position: absolute;
-width: 196px;
-height: 50px;
-left: 1056px;
-top: 84.44%;
-background: rgba(25, 118, 210, 0.4);
-`
-const Group5=styled.div
-`
-/* Group 5 */
-
-
-position: absolute;
-left: 13.47%;
-right: 10.36%;
-top: 22%;
-bottom: 22.24%;
-`
-const Facebookicon=styled.div
-`
-position: absolute;
-left: 0%;
-right: 77.51%;
-top: 0%;
-bottom: 0%;
-background: url(${img2});   
-`
-const FacebookText=styled.h2
-`
-/* Facebook */
-
-
-position: absolute;
-left: 37.82%;
-right: 10.36%;
-top: 0%;
-bottom: 0%;
-
-font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 20px;
-line-height: 0px;
-
-color: #000000;
-`
-const Alreadyacount=styled.h3
-`
-/* Already have an account yet? Login */
-
-
-position: absolute;
-left: 56.72%;
-
-top: 90.33%;
-
-
-font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 20px;
-line-height: 30px;
-/* identical to box height */
-
-
-color: #000000;
-`
-const Login=styled(NavLink)
-`
-position: absolute;
-left: 103.72%;
-
-top: 0%;
-
-
-font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 20px;
-line-height: 30px;
-/* identical to box height */
-
-`
+const Glogo = styled.div`
+height: 27.879310607910156px;
+width: 39.49693298339844px;
+background-image: url(${img});
+background-size: cover;
+`;
+const FBlogo = styled.div`
+height: 27.879310607910156px;
+width: 39.49693298339844px;
+background-image: url(${img2});
+background-size: cover;
+`;

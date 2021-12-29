@@ -1,5 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
+import moment from "moment";
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import Topic from '@material-ui/icons/Subject';
 import styled from 'styled-components';
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
@@ -52,50 +55,62 @@ const Book=()=> {
           });
       };
     return (
-        <div className="QuestionList">
-          {questions && (
-            <div className="Questions">
-              {questions.map((question) => {
-                return (
-                  <div className="question" key={question._id}>
-                    <div className="question__profile">
-                      
-                      <h4>{question.name}</h4>
-                      <h5>Location: {question.Location}</h5>
-                      <h5>Topic: {question.Topic}</h5>
-                    </div>
-                    <div className="question__info">
-                      <div className="question__question">
-                        <h4>{question.question}</h4>
-                      </div>
-                      <div className="question__stats">
-                        <div className="likes" style={{ cursor: "pointer" }}>
-                          <ThumbUpIcon onClick={() => Like(question._id)} />
-                          <h4>{question.upvotes}</h4>
-                        </div>
-                        <div className="dislikes" style={{ cursor: "pointer" }}>
-                          <ThumbDownIcon onClick={() => Dislike(question._id)} />
-                          <h4>{question.downvotes}</h4>
-                        </div>
-                        
-                        <div className="comments" style={{ cursor: "pointer" }}>
-                        <Postbutton>Update</Postbutton>
-                      
-                      
-                    
-                      
-                    </div>
-                        
-                      </div>
-                    </div>
+      <div className="QuestionList">
+      {questions && (
+        <div className="Questions">
+          {questions.map((question) => {
+            return (
+              <div className="question" key={question._id}>
+                <div className="question__profile">
+                  <h4>{question.name}</h4>
+                  <h5><LocationOnIcon></LocationOnIcon> {question.Location}</h5>
+                  <h5><Topic></Topic> {question.Topic}</h5>
+                  <Time>Updated On: {moment(question.date).format('LLLL')}</Time>
+                </div>
+                <div className="question__info">
+                  <div className="question__question">
+                    <h4>{question.question}</h4>
                   </div>
-                );
-              })}
-            </div>
-          )}
+                  <div className="question__stats">
+                    <div className="likes" style={{ cursor: "pointer" }}>
+                      <ThumbUpIcon onClick={() => Like(question._id)} />
+                      <h4>{question.upvotes}</h4>
+                    </div>
+                    <div className="dislikes" style={{ cursor: "pointer" }}>
+                      <ThumbDownIcon onClick={() => Dislike(question._id)} />
+                      <h4>{question.downvotes}</h4>
+                    </div>
+                    
+                    <div className="comments" style={{ cursor: "pointer" }}>
+                  <Postbutton>
+                    Update
+                  </Postbutton>
+                  
+                
+                  
+                </div>
+                    
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
-      );
-    };
+      )}
+    </div>
+  );
+};
+
+const Time= styled.h5`
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 15px;
+/* identical to box height */
+
+
+color: #000000;
+`
 export default Book;
 const Postbutton= styled.div`
 width: 144px;

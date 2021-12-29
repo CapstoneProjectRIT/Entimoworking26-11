@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
 import React,{useState,useEffect} from 'react';
+import closeicon from '../../assets/close.png'
 import styled from 'styled-components';
 
 import axios from 'axios';
@@ -64,11 +65,10 @@ function Post(props) {
   return (props.trigger) ? (
 
     <Contain>
-      <div>
+      <Close type="reset" onClick={() => props.setTrigger(false)}>
+        </Close>
         <h2>{user.fullname}</h2>
-        <button type="reset" onClick={() => props.setTrigger(false)}>
-          close
-        </button>
+        
         <input type="text" value={question} onChange={(e)=>setQuestion(e.target.value)} placeholder="Enter Question" />
         
         <input type="text" value={location} onChange={(e)=>setLocation(e.target.value)} placeholder="Enter Location" />
@@ -80,7 +80,6 @@ function Post(props) {
           post
         </button>
         {props.children}
-      </div>
     </Contain>
   ) : '';
 }
@@ -89,9 +88,15 @@ export default Post;
 const Contain = styled.div`
 width: 1000px;
 height: 300px;
-position: absolute;
 
 border: 1px solid lightgray;
 background-color: white;
+box-shadow: 2rem 1.4rem 2rem lightgray;
+`;
+const Close = styled.div`
+width: 30px;
+height: 30px;
+background-image: url(${closeicon});
+border: 1px solid rgba(255,255,255);
 box-shadow: 2rem 1.4rem 2rem lightgray;
 `;

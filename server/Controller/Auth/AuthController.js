@@ -1,4 +1,3 @@
-
 const formidable=require('formidable')
 const  userModel=require('../../Models/users/userSchema');
 const userSession=require( '../../Models/userSession/userSession');
@@ -143,13 +142,14 @@ askQustion(req,res)
                 
                 const owner=userSession.email;
                 const id=userSession.id.toString();
-                const name=userSession.name
+                const name=userSession.name;
                 const newquestion=new questionModule({
                     owner:owner,
                     name:name,
                     question:question,
                     Location:Location,
-                    Topic:Topic
+                    Topic:Topic,
+                    date:new Date()
                 })
               
                 const SavedQuestion=await newquestion.save();
@@ -166,7 +166,7 @@ askQustion(req,res)
 async GetAllQuestions(request, response) {
    
     try {
-      const data = await questionModule.find();
+      const data = await questionModule.find().sort({date:-1});
       
       return response.status(200).json(data);
     } catch (error) {
@@ -196,9 +196,9 @@ async GetAllQuestions(request, response) {
     try {
       const userSession=request.session.userSession||false;
         const owner=userSession.email;
-        const data = await questionModule.find({ owner: owner });
-      
-      
+        const data = await questionModule.find({ owner: owner }).sort({date:-1});;
+        
+  
       return response.status(200).json(data);
         
     } catch (error) {
@@ -212,7 +212,7 @@ async GetAllQuestions(request, response) {
    
     try {
       
-        const data = await questionModule.find({ Topic:'Education' });
+        const data = await questionModule.find({ Topic:'Education' }).sort({date:-1});;
       
       
       return response.status(200).json(data);
@@ -227,7 +227,7 @@ async GetAllQuestions(request, response) {
    
     try {
       
-        const data = await questionModule.find({ Topic: "Weather" });
+        const data = await questionModule.find({ Topic: "Weather" }).sort({date:-1});;
       
       
       return response.status(200).json(data);
@@ -242,7 +242,7 @@ async GetAllQuestions(request, response) {
    
     try {
       
-        const data = await questionModule.find({ Topic: "Nutrition" });
+        const data = await questionModule.find({ Topic: "Nutrition" }).sort({date:-1});;
       
       
       return response.status(200).json(data);
@@ -257,7 +257,7 @@ async GetAllQuestions(request, response) {
    
     try {
       
-        const data = await questionModule.find({ Topic: "Technology" });
+        const data = await questionModule.find({ Topic: "Technology" }).sort({date:-1});;
       
       
       return response.status(200).json(data);
@@ -272,7 +272,7 @@ async GetAllQuestions(request, response) {
    
     try {
       
-        const data = await questionModule.find({ Topic: "Social" });
+        const data = await questionModule.find({ Topic: "Social" }).sort({date:-1});;
       
       
       return response.status(200).json(data);
@@ -287,7 +287,7 @@ async GetAllQuestions(request, response) {
    
     try {
       
-        const data = await questionModule.find({ Topic: "Book" });
+        const data = await questionModule.find({ Topic: "Book" }).sort({date:-1});;
       
       
       return response.status(200).json(data);
@@ -376,6 +376,7 @@ async GetAllQuestions(request, response) {
         .json({ msg: "Server currently down please try again later" });
     }
   }
+  
   GetQuestionId(request,response)
   {
     const form = new formidable.IncomingForm();
@@ -440,7 +441,7 @@ Comment(request,response)
         {_id:this.questionId},
        {
          $push:{
-           comments:{
+           comments:{         
            name:name,
            comment:comment
            }
@@ -464,7 +465,22 @@ Comment(request,response)
         .json({ msg: "Server currently down please try again later" });
     }
 }
-
+async GetAllComments(request, response) {
+   
+  try {
+    const userSession=request.session.userSession||false;
+    const name=userSession.name;
+  
+      const data = await questionModule.find({name:name});
+ 
+    return response.status(200).json(data);
+      
+  } catch (error) {
+    return response
+      .status(500)
+      .json({ msg: "Server currently down please try again later" });
+  }
+}
 
 }
 

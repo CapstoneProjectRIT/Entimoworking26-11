@@ -14,7 +14,7 @@ const Navbar = () => (
       <NavMenu>
       
       <NavLink to="/Homepage" style={{textDecoration : 'none'}} >
-          <Navlink>
+          <Navlink >
          Home
         </Navlink>
         </NavLink>
@@ -29,9 +29,11 @@ const Navbar = () => (
           My Tasks
         </Navlink>
         </NavLink>
+        <NavLink to="/myupdates" style={{textDecoration : 'none'}}>
         <Navlink>
           My Updates
         </Navlink>
+        </NavLink>
 
       </NavMenu>
 

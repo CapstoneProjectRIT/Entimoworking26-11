@@ -1,15 +1,7 @@
 import Signup from './component/SignUp/SignUp';
 import Login from './component/Login/Login';
-import Homepagetrending from './component/Homepage/Homepagetrending';
-import HomepageMytasks from './component/Homepage/Homepagemytasks';
-import HomepageEdjucation from './component/Homepage/HomepageEducation';
-import HomepageSocial from './component/Homepage/HomepageSocial';
-import HomepageBooks from './component/Homepage/HomepageBooks';
-import HomepageNutrion from './component/Homepage/HomepageNutrition';
-import HomepageTechnology from './component/Homepage/HomepageTechnology';
-import HomepageWeather from './component/Homepage/HomepageWeather';
 import Landing from './component/Landingpage/Landing';
-
+import Search from './component/Homepage/Search'
 import Homepage from './component/Homepage/Homepage';
 import Profile from './component/Profile/Profile';
 import "./App.css";
@@ -51,28 +43,34 @@ function App() {
           <Profile/>
         </Route>
         <Route path="/mytasks">
-          <HomepageMytasks/>
+          <Homepage/>
+        </Route>
+        <Route path="/nav">
+          <Search/>
+        </Route>
+        <Route path="/myupdates">
+          <Homepage/>
         </Route>
         <Route path="/educationTask">
-          <HomepageEdjucation/>
+          <Homepage/>
         </Route>
         <Route path="/weatherTask">
-          <HomepageWeather/>
+          <Homepage/>
         </Route>
         <Route path="/NutritionTask">
-          <HomepageNutrion/>
+          <Homepage/>
         </Route>
         <Route path="/TechnologyTask">
-        <HomepageTechnology/>
+        <Homepage/>
         </Route>
         <Route path="/SocialTask">
-          <HomepageSocial/>
+          <Homepage/>
         </Route>
         <Route path="/BookTask">
-          <HomepageBooks/>
+          <Homepage/>
         </Route>
         <Route path="/trendingTask">
-          <Homepagetrending/>
+          <Homepage/>
         </Route>
     </Router>
     

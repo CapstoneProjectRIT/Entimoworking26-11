@@ -14,6 +14,13 @@ const questionSchema=mongoose.Schema({
 //       required:true,
 //       ref:'users'
 //   },
+date:{
+
+    type:Date,
+
+    required:true
+
+},
     question:{
         type:String,
         unique:true,

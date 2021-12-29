@@ -1,5 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
+import moment from "moment";
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import Topic from '@material-ui/icons/Subject';
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import styled from 'styled-components';
@@ -61,8 +64,9 @@ const Technology=()=> {
                     <div className="question__profile">
                       
                       <h4>{question.name}</h4>
-                      <h5>Location: {question.Location}</h5>
-                      <h5>Topic: {question.Topic}</h5>
+                      <h5><LocationOnIcon></LocationOnIcon> {question.Location}</h5>
+                  <h5><Topic></Topic> {question.Topic}</h5>
+                  <Time>Updated On: {moment(question.date).format('LLLL')}</Time>
                     </div>
                     <div className="question__info">
                       <div className="question__question">
@@ -96,6 +100,8 @@ const Technology=()=> {
         </div>
       );
     };
+
+    
 export default Technology;
 const Postbutton= styled.div`
 width: 144px;
@@ -105,3 +111,8 @@ text-align: center;
 color: white;
 border-radius: 12.4675px;
 `
+const Time= styled.h5`
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;`

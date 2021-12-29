@@ -1,18 +1,29 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Post from './Post';
+import { BrowserRouter as Router ,Route} from 'react-router-dom';
 import logo from '../../assets/ENTIMO30.png';
 import SeaarchIcon from '../../assets/search.png';
 import Bellicon from '../../assets/BellIcon.png';
 import Profileicon from '../../assets/ProfileIcon.png';
+import {Link} from "react-router-dom";
+
 
 export default function Nav() {
   const [Popup, setPopup] = useState(false);
+  function refreshPage() {
+    window.location.reload(false);
+  }
   return (
     <Container>
       <Logo />
-      <Searchbar>
+      
+      <Searchbar onClick={refreshPage}>
+      <Link to="/Nav"  >
+      
         <SearchContainer placeholder="search for people task or update" />
+        </Link>
+       
         <SearchIcon />
         <PNU>
           <PostT onClick={() => setPopup(true)}>Post Task</PostT>
@@ -20,7 +31,8 @@ export default function Nav() {
           <ProfileIcon />
         </PNU>
       </Searchbar>
-      <QAsection />
+      
+     
       <Post trigger={Popup} setTrigger={setPopup}>
         
       </Post>

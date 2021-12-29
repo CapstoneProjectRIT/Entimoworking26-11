@@ -1,6 +1,3 @@
-
-
-
 const express=require('express');
 const mongoose=require('mongoose');
 const cors=require('cors');
@@ -123,6 +120,9 @@ router.get('/api/TechnologyTask',(req,res)=>{
 })
 router.get('/api/SocialTask',(req,res)=>{
     authController.GetSocialTasks(req,res);
+})
+router.get('/api/MyUpdates',(req,res)=>{
+    authController.GetAllComments(req,res);
 })
 router.get('/api/BookTask',(req,res)=>{
     authController.GetBookTasks(req,res);

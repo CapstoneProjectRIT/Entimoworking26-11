@@ -1,8 +1,11 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+import moment from "moment";
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import Topic from '@material-ui/icons/Subject';
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-import ChatIcon from "@material-ui/icons/Chat";
 import '../Homepage/QuestionList.css';
 //import Comment from "../Homepage/Comment";
 //import PostComment from '../Homepage/PostComment';
@@ -61,8 +64,9 @@ const MyTask=()=> {
                     <div className="question__profile">
                       
                       <h4>{question.name}</h4>
-                      <h5>Location: {question.Location}</h5>
-                      <h5>Topic: {question.Topic}</h5>
+                      <h5><LocationOnIcon></LocationOnIcon> {question.Location}</h5>
+                  <h5><Topic></Topic> {question.Topic}</h5>
+                  <Time>Updated On: {moment(question.date).format('LLLL')}</Time>
                     </div>
                     <div className="question__info">
                       <div className="question__question">
@@ -79,7 +83,7 @@ const MyTask=()=> {
                         </div>
                         
                         <div className="comments" style={{ cursor: "pointer" }}>
-                      <ChatIcon></ChatIcon>
+                      <Postbutton>Update</Postbutton>
                       
                     
                       
@@ -95,4 +99,18 @@ const MyTask=()=> {
         </div>
       );
     };
+    
 export default MyTask;
+const Postbutton= styled.div`
+width: 144px;
+height: 24.13px;
+background: #16A13A;
+text-align: center;
+color: white;
+border-radius: 12.4675px;
+`
+const Time= styled.h5`
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;`
