@@ -108,7 +108,6 @@ export default PostComment;
 const Contain = styled.div`
 width: 1000px;
 height: 300px;
-position: absolute;
 
 border: 1px solid lightgray;
 background-color: white;

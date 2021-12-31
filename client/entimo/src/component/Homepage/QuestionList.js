@@ -150,13 +150,14 @@ const QuestionList=()=>{
                         getID(question._id);
                         setPopup(true) 
                          }}>Update</Postbutton>
-                      <PostComment trigger={Popup} setTrigger={setPopup}></PostComment>
+                      
                     
                       
                     </div>
                         
                       </div>
                     </div>
+                    <PostComment trigger={Popup} setTrigger={setPopup}></PostComment>
                   </div>
                 );
               })}

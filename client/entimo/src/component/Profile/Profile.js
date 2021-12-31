@@ -71,6 +71,10 @@ const Profile = () => {
            <RightContainer>
              <Details>Details</Details>
              <Editicon><LocationOnIcon/><Fcount>Edit</Fcount></Editicon>
+             <Infobox>
+             <div>Name</div>
+             <div>Abhishek</div>
+             </Infobox>
              </RightContainer>
            </Router>
   
@@ -78,6 +82,16 @@ const Profile = () => {
   
     )
 }
+const Infobox= styled.div`
+position: absolute;
+width: 291px;
+height: 314px;
+left: 20px;
+top: 70px;
+
+background: red;
+
+`
 const Container = styled.div`
 position: absolute;
 width: 100%;
