@@ -22,6 +22,19 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    MobileNo:{
+        type:Number,
+        
+    },
+    Occupation:{
+        type: String
+    },
+    Location:{
+        type: String
+    },
+    Achievement: {
+        type: String
+    },
     tokens: [
         {
         token: {

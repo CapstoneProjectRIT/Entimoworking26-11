@@ -6,6 +6,7 @@ import closeicon from '../../assets/close.png'
 import styled from 'styled-components';
 
 import axios from 'axios';
+import '../Homepage/Post.css';
 function Post(props) {
 
   const [question,setQuestion]=useState('');
@@ -68,17 +69,29 @@ function Post(props) {
       <Close type="reset" onClick={() => props.setTrigger(false)}>
         </Close>
         <h2>{user.fullname}</h2>
-        
+        <p>Ask Question</p>
         <input type="text" value={question} onChange={(e)=>setQuestion(e.target.value)} placeholder="Enter Question" />
-        
+        <p>Enter Location</p>
         <input type="text" value={location} onChange={(e)=>setLocation(e.target.value)} placeholder="Enter Location" />
-        
+        <select  value={location} onChange={(e)=>setLocation(e.target.value)}>
+              <option value="Pune">Pune</option>
+              <option value="Baramati">Baramati</option>
+              <option selected value="Islampur">Islampur</option>
+              <option value="Kolhapur">Kolhapur</option>
+        </select>
+        <p>Enter Topic</p>
         <input type="text" value={topic} onChange={(e)=>setTopic(e.target.value)} placeholder="Enter Topic" />
         
-        
-        <button onClick={postquestion} >
+        <select value={topic} onChange={(e)=>setTopic(e.target.value)}>
+              <option value="Education">Education</option>
+              <option value="Weather">Weather</option>
+              <option selected value="Nutrition">Nutrition</option>
+              <option value="Social">Social</option>
+              <option value="Books">Books</option>
+</select>
+        <PostButton onClick={postquestion} >
           post
-        </button>
+        </PostButton>
         {props.children}
     </Contain>
   ) : '';
@@ -86,11 +99,11 @@ function Post(props) {
 
 export default Post;
 const Contain = styled.div`
-width: 1000px;
-height: 300px;
+width: 1210px;
+height: 500px;
 
 border: 1px solid lightgray;
-background-color: white;
+background-color:#faf8f9;
 box-shadow: 2rem 1.4rem 2rem lightgray;
 `;
 const Close = styled.div`
@@ -100,3 +113,12 @@ background-image: url(${closeicon});
 border: 1px solid rgba(255,255,255);
 box-shadow: 2rem 1.4rem 2rem lightgray;
 `;
+const PostButton=styled.button`
+ width: 144px;
+height: 24.13px;
+background: #16A13A;
+text-align: center;
+
+color: white;
+border-radius: 12.4675px;
+`

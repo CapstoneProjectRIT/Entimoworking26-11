@@ -9,6 +9,7 @@ import Profileicon from '../../assets/ProfileIcon.png';
 import {Link} from "react-router-dom";
 
 
+
 export default function Nav() {
   const [Popup, setPopup] = useState(false);
   function refreshPage() {
@@ -28,6 +29,7 @@ export default function Nav() {
         <PNU>
           <PostT onClick={() => setPopup(true)}>Post Task</PostT>
           <BellIcon />
+          
           <ProfileIcon />
         </PNU>
       </Searchbar>

@@ -7,7 +7,9 @@ import { BrowserRouter as Router ,Route} from 'react-router-dom';
 import Qamytasks from '../MyTask/MyTask';
 import Qamyupdate from '../MyUpdate/MyUpdate';
 import {NavLink,} from "react-router-dom";
+import EditDetails from './Details';
 const Profile = () => {
+    
     const [user,setfullname]=useState([]);
     
     useEffect(()=>{
@@ -23,20 +25,21 @@ const Profile = () => {
       });
 
     });
+    const [Popup, setPopup] = useState(false);
     return (
       
    <Container >
          <Nav>
          <Logo></Logo> 
          <NavLink to="/Login"  ><Login>Log In</Login></NavLink>
-         <NavLink to="/SignUp"  ><Signup>Join Now</Signup></NavLink>
+         <NavLink to="/SignUp"  ><Signup>Log Out</Signup></NavLink>
          </Nav>
          <Router>
          <LeftContainer>
            <Header>
              <Profilepic/>
              <Profilinfo>
-              <Name>{user.fullname}</Name>
+              <Name >{user.fullname}</Name>
               <Count>
               <Fcount>Followers</Fcount>
               <Fcount>Following</Fcount>
@@ -70,14 +73,11 @@ const Profile = () => {
            </LeftContainer>
            <RightContainer>
              <Details>Details</Details>
-             <Editicon><LocationOnIcon/><Fcount>Edit</Fcount></Editicon>
-             <Infobox>
-             <div>Name</div>
-             <div>Abhishek</div>
-             </Infobox>
+             <Editicon onClick={() => setPopup(true)}><LocationOnIcon /><Fcount >Edit</Fcount></Editicon>
+             
              </RightContainer>
            </Router>
-  
+           <EditDetails trigger={Popup} setTrigger={setPopup}></EditDetails>
   </Container>
   
     )

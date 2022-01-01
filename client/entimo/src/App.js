@@ -4,6 +4,7 @@ import Landing from './component/Landingpage/Landing';
 import Search from './component/Homepage/Search'
 import Homepage from './component/Homepage/Homepage';
 import Profile from './component/Profile/Profile';
+import Details from './component/Profile/Details'
 import "./App.css";
 import {Route,BrowserRouter as Router} from 'react-router-dom';
 import {useEffect,useState} from 'react';
@@ -71,6 +72,9 @@ function App() {
         </Route>
         <Route path="/trendingTask">
           <Homepage/>
+        </Route>
+        <Route path="/Details">
+          <Details/>
         </Route>
     </Router>
     

@@ -45,7 +45,53 @@ class AuthController{
         }
     }
 
+EditProfile(req,res){
+  const form =new formidable.IncomingForm();
+  try{
+      form.parse(req,async (error,fileds,files)=>{
+          if(error)
+          {
+             
+              return res.status(500).json({msg:"Network Error: Faild to register try again later"});
+          }
+          const { MobileNo, Occupation, Location, Achievement } = fileds;
+         
+         /* if (!MobileNo || !Occupation || !Location || !Achievement) {
+              return res.status(422).json({ error: "Please enter all the details" });
+      
+          }*/
+          /*const mobileExist = await userModel.findOne({ MobileNo: MobileNo });
+ 
+          if (mobileExist) {
+              return res.status(422).json({ error: "mobile alredy exist" });
+          }*/
+          
+          const userSession=req.session.userSession||false;
+        const owner=userSession.email;
+        //const userLogin = await userModel.findOne({ email: owner });
+          const updatedDoc = await userModel.findOneAndUpdate(
+            {email:owner},
+            {
+              MobileNo:MobileNo,
+              Occupation: Occupation,
+              Location: Location,
+              Achievement: Achievement
+            },
+            
 
+            { new: true }
+          );
+          //const user = new userModel({MobileNo, Occupation, Location,Achievement });
+  
+          //await user.save();
+          return res.status(201).json({ error: "User Profile Edit successfully" });
+      })
+  }
+  catch (error)
+  {
+      return res.status(500).json({msg:"Server Error: Server is Currently Down try again later"});
+  }
+}
     Login(req,res){
         const form =new formidable.IncomingForm();
         try{

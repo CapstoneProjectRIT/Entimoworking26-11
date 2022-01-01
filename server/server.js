@@ -63,7 +63,9 @@ const authController=new AuthController();
 router.post('/api/SignUp',(req,res)=>{
     authController.SignUp(req,res);
 });
-
+router.post('/api/EditProfile',(req,res)=>{
+    authController.EditProfile(req,res);
+});
 
 router.post('/api/Login',(req,res)=>{
     authController.Login(req,res);

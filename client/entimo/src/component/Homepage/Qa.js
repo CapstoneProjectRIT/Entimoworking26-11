@@ -1,6 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Post from './Post';
+import axios from 'axios';
 import styled from 'styled-components';
 import { BrowserRouter as Router ,Route} from 'react-router-dom';
 import Questionlist from './QuestionList';
@@ -13,14 +14,29 @@ import QaNutrition from '../Topics/Nutrition';
 import QaSocial from '../Topics/Social';
 import QaWeather from '../Topics/Weather';
 import QaBooks from '../Topics/Book';
-
 export default function Qa() {
   const [Popup, setPopup] = useState(false);
+    
+    const [user,setfullname]=useState([]);
+    
+    useEffect(()=>{
+        const url="http://localhost:5000/api/aboutus";
+       
+        axios
+      .get(url, { withCredentials: true })
+      .then((response) => {
+        setfullname(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    });
   return (
     
   <Router>
     <QASection >
-    <PostT onClick={() => setPopup(true)}><Name>User Name</Name><AskQ>What is your task/queston?</AskQ></PostT>
+    <PostT onClick={() => setPopup(true)}><Name>{user.fullname}</Name><AskQ>What is your task/queston?</AskQ></PostT>
     <Post trigger={Popup} setTrigger={setPopup}>
       </Post>
       <Route path="/Homepage">
